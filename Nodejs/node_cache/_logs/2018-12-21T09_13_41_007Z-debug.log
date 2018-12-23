@@ -1,0 +1,40 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'G:\\Nodejs\\node.exe',
+1 verbose cli   'G:\\Nodejs\\node_global\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'run',
+1 verbose cli   'lint',
+1 verbose cli   '--',
+1 verbose cli   '--fix' ]
+2 info using npm@6.4.1
+3 info using node@v10.14.0
+4 verbose run-script [ 'prelint', 'lint', 'postlint' ]
+5 info lifecycle vuedemo@1.0.0~prelint: vuedemo@1.0.0
+6 info lifecycle vuedemo@1.0.0~lint: vuedemo@1.0.0
+7 verbose lifecycle vuedemo@1.0.0~lint: unsafe-perm in lifecycle true
+8 verbose lifecycle vuedemo@1.0.0~lint: PATH: G:\Nodejs\node_global\node_modules\npm\node_modules\npm-lifecycle\node-gyp-bin;G:\VueProject\vuedemo\node_modules\.bin;C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Common Files\Adobe\AGL;C:\Program Files\MySQL\MySQL Utilities 1.6\;G:\software\android-sdk-windows\platform-tools;F:\java\java-oxygen\eclipse;G:\software\android-sdk-windows\tools;F:\java\eclipse;C:\Program Files\MySQL\MySQL Server 5.6\bin;C:\Windows;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;F:\Sublime Text Build 3143 x64\;C:\;rogram Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\WINDOWS\System32\OpenSSH\;G:\software\Tomcat-9.0.10\Bin;F:\java\jdk1.8.0_141\\bin;G:\Tomcat-9.0.10\bin;G:\software\Microsoft VS Code\bin;G:\software\Git\cmd;G:Nodejs\;G:\Nodejs\node_global;G:\Nodejs\;C:\Users\Administrator\AppData\Local\Programs\Python\Python36\Lib\idlelib;C:\Users\Administrator\AppData\Local\Programs\Python\Python36\Scripts\;C:\Users\Administrator\AppData\Local\Programs\Python\Python36\;F:\应用程序\Microsoft Visual Studio\Tools\WinNT;F:\应用程序\Microsoft Visual Studio\MSDev98\Bin;F:\应用程序\Microsoft Visual Studio\Tools;F:\应用程序\Microsoft Visual Studio\VC98\bin;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;F:\java\jdk1.8.0_141\bin\;C:\Users\Administrator\AppData\Local\Microsoft\WindowsApps;G:\software\emacs\bin;G:\software\Vim8.0\vim80;C:\Users\Administrator\AppData\Roaming\npm;G:\QuickStart;
+9 verbose lifecycle vuedemo@1.0.0~lint: CWD: G:\VueProject\vuedemo
+10 silly lifecycle vuedemo@1.0.0~lint: Args: [ '/d /s /c',
+10 silly lifecycle   'eslint --ext .js,.vue src test/e2e/specs "--fix"' ]
+11 silly lifecycle vuedemo@1.0.0~lint: Returned: code: 1  signal: null
+12 info lifecycle vuedemo@1.0.0~lint: Failed to exec lint script
+13 verbose stack Error: vuedemo@1.0.0 lint: `eslint --ext .js,.vue src test/e2e/specs "--fix"`
+13 verbose stack Exit status 1
+13 verbose stack     at EventEmitter.<anonymous> (G:\Nodejs\node_global\node_modules\npm\node_modules\npm-lifecycle\index.js:301:16)
+13 verbose stack     at EventEmitter.emit (events.js:182:13)
+13 verbose stack     at ChildProcess.<anonymous> (G:\Nodejs\node_global\node_modules\npm\node_modules\npm-lifecycle\lib\spawn.js:55:14)
+13 verbose stack     at ChildProcess.emit (events.js:182:13)
+13 verbose stack     at maybeClose (internal/child_process.js:962:16)
+13 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:251:5)
+14 verbose pkgid vuedemo@1.0.0
+15 verbose cwd G:\VueProject\vuedemo
+16 verbose Windows_NT 10.0.17134
+17 verbose argv "G:\\Nodejs\\node.exe" "G:\\Nodejs\\node_global\\node_modules\\npm\\bin\\npm-cli.js" "run" "lint" "--" "--fix"
+18 verbose node v10.14.0
+19 verbose npm  v6.4.1
+20 error code ELIFECYCLE
+21 error errno 1
+22 error vuedemo@1.0.0 lint: `eslint --ext .js,.vue src test/e2e/specs "--fix"`
+22 error Exit status 1
+23 error Failed at the vuedemo@1.0.0 lint script.
+23 error This is probably not a problem with npm. There is likely additional logging output above.
+24 verbose exit [ 1, true ]

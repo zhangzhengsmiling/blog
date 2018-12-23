@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>vuedemo</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    html,
+    body {
+      height: 100%;
+      width: 100%;
+      background: #080808;
+    }
+
+    .stars {
+      position: fixed;
+      width: 60px;
+      animation: shine 1s alternate infinite;
+    }
+
+    @keyframes shine {
+      0% {
+        transform: scale(0.8);
+        opacity: 0.4;
+      }
+
+      100% {
+        transform: scale(1.5);
+        opacity: 0.8;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app"></div>
+</body>
+
+<script>
+  src = '/static/images/star/star.png'
+  let body = document.getElementsByTagName('body')[0]
+  let starNum = 50;
+  for (let i = 0; i < starNum; i++) {
+    let left = Math.random() * body.offsetWidth + 'px'
+    let top = Math.random() * body.offsetHeight + 'px'
+    let width = 10 + Math.random() * 15 + 'px'
+    img = document.createElement('img')
+    img.src = src
+    img.style.top = top
+    img.style.left = left
+    img.style.width = width
+    img.style.animationDelay = Math.random() * 2000 + 'ms'
+    img.classList.add('stars')
+    body.appendChild(img)
+  }
+</script>
+
+</html>
