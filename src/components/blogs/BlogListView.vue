@@ -1,5 +1,5 @@
 <template>
- <div class="blog_list_view">
+ <div>
    <line-star></line-star>
   <map-view></map-view>
   <blog-list></blog-list>

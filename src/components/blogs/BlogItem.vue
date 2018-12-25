@@ -1,18 +1,24 @@
+<!--
+  此处同一说明：所有的star之类的名字均表示点赞数
+-->
+
 <template>
-  <li class="blog_item">
+  <li class="blog_item" @click="showBlogDetail">
     <h2 class="blog_item_tilte">{{item.title}}</h2>
     <div class="blog_item_author">
       <img class="blog_item_author_head" :src="item.author.headUrl" alt="">
       <div class="blog_item_author_accountname" :title="item.author.accountName">{{item.author.accountName}}</div>
     </div>
     <div class="blog_item_classify">{{item.classify}}</div>
-    <div class="blog_item_stars">{{item.stars}}</div>
-    <div class="blog_item_comments_count">{{item.commentsCount}}</div>
-    <div class="blog_item_publish_time">{{item.publishTime}}</div>
+    <div class="blog_item_viewers"><span class="icon-eye icon"></span>{{item.viewers}}</div>
+    <div class="blog_item_stars"><span class="icon-heart icon"></span>{{item.stars}}</div><!--点赞数-->
+    <div class="blog_item_comments_count"><span class="icon-bubble2 icon"></span>{{item.commentsCount}}</div>
+    <div class="blog_item_publish_time"><span class="icon-clock icon"></span>{{item.publishTime}}</div>
   </li>
 </template>
 
 <script>
+import PubSub from 'pubsub-js'
 export default {
   props: ['item'],
   data () {
@@ -22,6 +28,11 @@ export default {
   },
   components: {
 
+  },
+  methods: {
+    showBlogDetail () {
+      PubSub.publish('isShowList', {isShowList: false, articleId: this.item.articleId})
+    }
   }
 }
 </script>
@@ -83,20 +94,32 @@ export default {
     text-align: center;
     background: green;
   }
+  .blog_item_viewers {
+    position: absolute;
+    top: 70px;
+    left: 480px;
+    width: 80px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    background: green;
+    color: #fff;
+  }
   .blog_item_stars {
     position: absolute;
     top: 70px;
-    left: 600px;
+    left: 580px;
     width: 100px;
     height: 40px;
     line-height: 40px;
     text-align: center;
     background: green;
+    color: #fff;
   }
   .blog_item_comments_count {
     position: absolute;
     top: 70px;
-    left: 720px;
+    left: 700px;
     width: 100px;
     height: 40px;
     line-height: 40px;
@@ -106,11 +129,14 @@ export default {
   .blog_item_publish_time {
     position: absolute;
     top: 70px;
-    left: 860px;
-    width: 180px;
+    left: 820px;
+    width: 220px;
     height: 40px;
     line-height: 40px;
-    text-align: center;
+    text-align: left;
     background: green;
+  }
+  .icon {
+    margin-right: 5px;
   }
 </style>

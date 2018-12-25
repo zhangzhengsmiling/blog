@@ -50,8 +50,8 @@ export default {
     .right_login {
       position: fixed;
       z-index: 2;
-        right:100px;
-        top: 200px;
+        /* right:100px; */
+        /* top: 200px; */
         width: 80px;
         height:80px;
         /* background: red; */
