@@ -5,9 +5,9 @@
     <right-login></right-login>
     <!-- <map-view></map-view> -->
     <left-navigation class="app_left_nav"></left-navigation>
-    <test></test>
+    <!--<test></test>-->
     <!-- <line-star></line-star> -->
-    <!-- <blog-list-view class="app_blog_list_view"></blog-list-view> -->
+     <blog-list-view class="app_blog_list_view"></blog-list-view>
     <!-- <blog-list></blog-list> -->
     <!-- <sowing-map class="app_sowingmap"></sowing-map> -->
     <!-- <rotate-map></rotate-map> -->
