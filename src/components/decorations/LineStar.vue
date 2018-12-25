@@ -23,7 +23,7 @@ export default {
     /* width: 70%; */
     margin:0 auto;
     height: 8px;
-    background:rgba(100 , 10 , 84 , .8);
+    background: rgba(100 , 100 , 84 , .8);
     padding: 1px;
     box-sizing: border-box;
   }

@@ -1,19 +1,13 @@
 <template>
   <div id="app">
     <top-head></top-head>
-    <top-navigation></top-navigation>
+    <!-- <top-navigation></top-navigation> -->
     <right-login></right-login>
-    <!-- <map-view></map-view> -->
     <left-navigation class="app_left_nav"></left-navigation>
-    <!--<test></test>-->
-    <!-- <line-star></line-star> -->
-     <blog-list-view class="app_blog_list_view"></blog-list-view>
-    <!-- <blog-list></blog-list> -->
-    <!-- <sowing-map class="app_sowingmap"></sowing-map> -->
-    <!-- <rotate-map></rotate-map> -->
+    <blog-msg></blog-msg>
+     <!-- <blog-list-view class="app_blog_list_view"></blog-list-view> -->
   </div>
 </template>
-
 <script>
 import TopHead from './components/page/TopHead.vue'
 import TopNavigation from './components/page/TopNavigation.vue'
@@ -21,6 +15,8 @@ import MapView from './components/decorations/MapView.vue'
 import LeftNavigation from './components/page/LeftNavigation.vue'
 import BlogListView from './components/blogs/BlogListView.vue'
 import RightLogin from './components/page/RightLogin.vue'
+
+import BlogMsg from './components/blogs/BlogMsg.vue'
 // import BlogList from './components/blogs/BlogList.vue'
 // import SowingMap from './components/decorations/SowingMap.vue'
 // import RotateMap from './components/decorations/RotateMap.vue'
@@ -34,7 +30,8 @@ export default {
     LeftNavigation,
     BlogListView,
     RightLogin,
-    Test
+    Test,
+    BlogMsg
     // LineStar
     // BlogList
     // SowingMap,
