@@ -8,7 +8,7 @@
  <div class="right_login" @mouseover="loginMouseover" @mouseleave="loginMouseleave">
      <div :class="{'right_login_head':true , 'right_login_head_expand':isHover&&isLogin}">
          <img class="right_login_head_image" src="/static/images/head/head0.jpg" alt="">
-         <div class="clickToLogin" v-if="isShowLoginTips">点击登录</div>
+        <a href="/static/html/Login/login.html"><div class="clickToLogin" v-if="isShowLoginTips">点击登录</div></a>
      </div>
      <div :class="{'right_login_head_button': true, 'right_login_head_button_show': isHover && isLogin}">
        <div class="right_login_circle1">我的博客</div>
