@@ -39,11 +39,11 @@ export default {
 
 <style>
   .blog_item {
+    width: 1100px;
     list-style: disc;
     position: relative;
     padding: 10px;
     height: 120px;
-    /* background: red; */
     color: #fff;
     border-bottom: 1px solid rgb(58, 43, 43);
     box-sizing: border-box;
@@ -57,7 +57,7 @@ export default {
   }
   .blog_item:hover h2 {
     text-decoration: underline;
-    color: blue;
+    color: rgb(116, 172, 189);
   }
   .blog_item_author {
     position: absolute;

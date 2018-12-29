@@ -1,16 +1,7 @@
 <template>
  <div class="top_nav">
      <nav class="top_nav_nav">
-         <li class="clssify">首页</li>
-         <li class="clssify">最新文章</li>
-         <li class="clssify">人工智能</li>
-         <li class="clssify">大数据 </li>
-         <li class="clssify">区块链</li>
-         <li class="clssify">运维</li>
-         <li class="clssify">前端</li>
-         <li class="clssify">后端</li>
-         <li class="clssify">数据库</li>
-         <li class="clssify">云计算</li>
+       <li :class="{'current_class': index === currentClass}" v-for="(classify, index) in classifyList" :key="index" @click="showClassify">{{classify}}</li>
      </nav>
  </div>
 </template>
@@ -19,21 +10,26 @@
 export default {
   data () {
     return {
-
+      classifyList: ['首页', '最新文章', '人工智能', '大数据', '区块链', '运维', '前端', '后端', '数据库', '云计算'],
+      currentClass: 0
     }
   },
-  components: {
-
+  methods: {
+    showClassify (e) {
+      this.currentClass = this.classifyList.findIndex(classify => e.target.innerText === classify)
+    }
   }
 }
 </script>
 
 <style>
     .top_nav {
+        position: relative;
         width: 1050px;
         height: 40px;
         margin-top: 0;
         margin-left: 15%;
+        z-index: 20;
     }
     .top_nav_nav>li {
         float: left;
@@ -53,11 +49,18 @@ export default {
          cursor: pointer;
          background: gray;
          border: none;
-         color: azure
+         color: azure;
      }
     .top_nav_nav::after {
         content: "";
         display: block;
         clear: both;
+    }
+    .top_nav_nav>li.current_class {
+      transform: scale(1.2);
+      cursor: pointer;
+      background: gray;
+      border: none;
+      color: azure;
     }
 </style>

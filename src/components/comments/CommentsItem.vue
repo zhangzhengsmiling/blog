@@ -1,17 +1,19 @@
 <template>
  <div class="comments_item">
    <div class="comments_item_head">
-     <img class="comments_item_headImg" src="/static/images/head/head2.jpg" alt="">
-     <div class="comments_item_name" title="name">依然是一个长名字</div>
+     <img :src="commentItem.headUrl" alt="" class="comments_item_head_image">
+     <div class="comments_item_viewer_name" :title="commentItem.username">{{commentItem.username}}</div>
    </div>
-   <div class="comments_item_comment">
-     <div class="comments_item_content">这是一个评论区文本，总是喜欢说一些废话，好了，下面是废话的内容：你好，我很喜欢你的文章，虽然我一点也没看懂，当我就是很喜欢，支持原创作者加油，好了，写满一行，开溜！</div>
+   <div class="comments_content">
+     <div class="comments_content_text">{{commentItem.commentText}}</div>
+    <div class="comments_content_time">发表于{{commentItem.commentTime}}</div>
    </div>
  </div>
 </template>
 
 <script>
 export default {
+  props: ['commentItem'],
   data () {
     return {
 
@@ -25,43 +27,61 @@ export default {
 
 <style>
   .comments_item {
+    position: relative;
+    margin-top: 3px;
+    padding: 10px;
     width: 100%;
-    height: auto;
-    background:rgb(159, 164, 168);
-    padding:0 10px;
+    height: 140px;
+    background:transparent;
     box-sizing: border-box;
+    border-bottom: 1px solid #fff;
   }
   .comments_item_head {
-    width:120px;
-    height: 88px;
-    background: red;
+    width: 100px;
+    height: 100px;
   }
-  .comments_item_headImg {
-    width: 60px;
-    height: 60px;
-    margin-left: 30px;
-    border-radius: 30px;
+  .comments_item_head_image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
   }
-  .comments_item_comment {
-    /* background: red; */
-    padding: 10px;
-    margin-top: -84px;
-    margin-left: 120px;
-    background: blue;
-  }
-  .comments_item_name {
-    width: 120px;
-    line-height: 20px;
-    font-size: 12px;
+  .comments_item_viewer_name {
+    width:100%;
     height: 20px;
-    font-weight: 600;
-    color: lightgoldenrodyellow;
     text-align: center;
-    text-overflow: ellipsis;
+    line-height: 20px;
     white-space: nowrap;
+    text-overflow: ellipsis;
     overflow: hidden;
+    font-size: 12px;
+    font-weight: 800;
+    color: aqua;
   }
-  .comments_item_name:hover {
-    cursor: default;
+  .comments_item_viewer_name:hover {
+    cursor: pointer;
+  }
+  .comments_content {
+    position: absolute;
+    padding: 10px;
+    top: 0;
+    left: 120px;
+    width: 970px;
+    height: 140px;
+    color:cadetblue;
+    border-left: 4px solid gray;
+    text-indent: 2em;
+    box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  .comments_content_text {
+    width: 100%;
+    height: 100px;
+  }
+  .comments_content_time {
+    position: absolute;
+    top: 110px;
+    left: 700px;
+    font-size: 12px;
+    color:antiquewhite;
   }
 </style>

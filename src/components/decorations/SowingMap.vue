@@ -55,7 +55,6 @@ export default {
       clearInterval(this.sowingmap_interval)
     },
     sowingmap_continue (e) {
-      console.log(e.target)
       // e.target.style.transform += ' ' + scale(1.2)
       this.sowingmap_interval = setInterval(() => {
         if (this.sowingmap_show) {

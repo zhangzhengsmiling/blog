@@ -12,6 +12,7 @@
 		}
 		html, body {
 			background: #080808;
+			overflow: hidden;
 		}
 		.login {
 			position: absolute;
@@ -21,9 +22,11 @@
 			right:0;
 			top:0;
 			bottom:0;
-			margin: 200px auto;
+			z-index: 10;
+			margin: 300px auto;
 			border: 5px solid #0ff;
 			color: #fff;
+			/* background: red; */
 			text-align: center;
 			font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 			animation: shine 3s linear alternate infinite;
@@ -77,6 +80,7 @@
 		.image {
 			width: 80px;
 			height: 22px;
+			line-height: 22px;
 			position: absolute;
 			top: 106px;
 			left: 230px;
@@ -85,6 +89,11 @@
 			border: 1px solid green;
 			font-family: Arial, Helvetica, sans-serif;
 			overflow: hidden;
+			transition: all 0.5s;
+		}
+		.image:hover {
+			transform: scale(1.5);
+			cursor: pointer;
 		}
 		.verify {
 			width:40px;
@@ -96,7 +105,7 @@
 		.code {
 			/* font-size: 10px; */
 			float: left;
-			width: 12px;
+			width: 18px;
 		}
 		.line {
 			position: absolute;
@@ -104,9 +113,27 @@
 			height: 1px;
 			background: red;
 		}
+		.bubble {
+			position: absolute;
+			left: 400px;
+			/* top: -40px; */
+			width: 100px;
+			z-index: 1;
+			animation: float linear normal 1;
+		}
+		@keyframes float {
+			0% {
+				top: 800px;
+				opacity: 1.0;
+			}
+			100% {
+				top: 80px;
+				opacity: 0.0;
+			}
+		}
 	</style>
 </head>
-<body>
+<body class="body">
 	<div class="login">
 			<p class="userP">
 				<span>用户名：</span><input class="userName"  type="text" name="user">
@@ -121,13 +148,10 @@
 			</p>
 			<button class="btnLogin">登录</button>
 	</div>
-
-	<img src="/static/images/others/bubble1.png" alt="">
-	<img src="/static/images/others/bubble2.png" alt="">
-	<img src="/static/images/others/bubble3.png" alt="">
-	<script>
+<script>
 		const user = 'zhang'
 		const pass = '123'
+		let body = document.getElementsByClassName('body')[0]
 		let btnLogin = document.getElementsByClassName('btnLogin')[0]
 		let usernamae = document.getElementsByClassName('userName')[0]
 		let psw = document.getElementsByClassName('psw')[0]
@@ -135,12 +159,17 @@
 		let verifyCode = document.getElementsByClassName('verify')[0]
 		let code = ''
 		/**生成验证码**/
-		// 生成随机字符
 		function drawVerifyCode () {
+			//若原有验证码位，需移除
+			Array.from(document.getElementsByClassName('code')).forEach((codeDiv) => {
+				codeDiv.remove()
+			})
+			code = ''
 			let i = 0
-			while (i < 6) {
-				let c = Math.round(Math.random() * 42) + 80;
-				if ((c >= 80 && c <= 89) || (c >= 65 && c <= 90) || (c >= 97 && c <= 122)) {
+			// 生成随机字符
+			while (i < 4) {
+				let c = Math.round(Math.random() * 74) + 48;
+				if ((c >= 48 && c <= 57) || (c >= 65 && c <= 90) || (c >= 97 && c <= 122)) {
 					code += String.fromCharCode(c)
 					i++
 				}
@@ -152,7 +181,7 @@
 				let div = document.createElement('div')
 				div.append(textNode)
 				div.classList.add('code')
-				div.style.fontSize = (Math.round(Math.random() * 6)) + 12 + 'px'
+				div.style.fontSize = (Math.round(Math.random() * 6)) + 18 + 'px'
 				let angle = Math.round(Math.random() * 100) - 50
 				// console.log(angle)
 				div.style.transform = `rotate(${angle}deg)`
@@ -178,19 +207,56 @@
 				image.append(line)
 			}
 		}
+		
+		/*随机生成气泡*/
+		function createBubble () {
+			let randNum = Math.round(Math.random() * 1000)
+			let bubbleUrls = ['/static/images/others/bubble1.png', '/static/images/others/bubble2.png', '/static/images/others/bubble3.png']
+			let timeSlice = Math.random() * 3 * 1000
+			let img = document.createElement('img')
+			let animateTime = Math.random() * 2 * 1000 + 5000
+			let clearTime = timeSlice + animateTime
+			setTimeout(() => {
+				img.src = bubbleUrls[randNum % 3]
+				img.style.left = Math.round(Math.random() * 1500) + 'px'
+				img.style.opacity = 0
+				img.classList.add('bubble')
+				img.style.animationDuration = animateTime + 'ms'
+				img.style.width = (Math.round(Math.random() * 40)) + 80 + 'px'
+				let angle = Math.round(Math.random() * 360)
+				console.log(angle)
+				img.style.transform = `rotate(${angle}deg)`
+				body.append(img)
+			}, timeSlice)
+			setTimeout(() => {
+				img.remove()
+			}, clearTime);
+		}
+		
+		/*定时器生成气泡*/
+		setInterval(() => {
+			createBubble()
+		}, 800);
 
 		drawVerifyCode()
 		
 		btnLogin.addEventListener('click' , () => {
 			if (verifyCode.value.toLowerCase() === code.toLowerCase()){
 				if (usernamae.value === user && psw.value === pass) {
-					window.location.href = 'index3.html'
+					window.location.href = 'index.html'
 				} else {
-					alert('密码错误')
+					alert('用户名或密码错误')
+					verifyCode.value = ''
 				}
 			} else {
 				alert('验证码错误')
+				verifyCode.value = ''
 			}
+			drawVerifyCode()
+		} , false)
+
+		image.addEventListener('click' , () => {
+			drawVerifyCode()
 		} , false)
 	</script>
 </body>
