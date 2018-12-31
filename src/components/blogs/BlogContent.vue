@@ -12,39 +12,30 @@
 </template>
 
 <script>
+import PubSub from 'pubsub-js'
+let fs = require('fs')
 export default {
   data () {
     return {
-      text: `
-      <span>
-          今天是我第一天开通博客，就先来一个简单的辗转相除法吧,好像文本还不够长，那我就来简单的说说辗转相除法吧，这个算法向我们提供了求最大公因数的高效算法
-      他比我们平时所用的试除法效率高很多，当数字很大的时候，其效率差异尤为突出。闲话少叙，上代码：
-      </span>
-      <div class="code">
-      //欧几里德算法求最大公因数
-      public static int gcd(int num1, int num2){
-        if(num1 % num2 == 0){
-          return num2;
-        }else{
-          return gcd(num2 , num1 % num2);
-        }
-      }
-      public static void main(Strnig[] args){
-        System.out.println(gcd(100 , 28);)
-      }
-      </div>
-      <span>
-          哈哈，这样就ok了，虽然辗转相除法，有其严格的数学证明过程，但是作为程序员的我们，只要会用就可以啦，有兴趣的小伙伴也可以参考一下百度的证明过程：
-      </span>
-      <a class="link" href="https://baike.baidu.com/item/%E8%BE%97%E8%BD%AC%E7%9B%B8%E9%99%A4%E6%B3%95/4625352">辗转相除法</a>
-          为方便测试，随便截了张代码图：
-      <img src="/static/Users/UserId/ArticleId/imgname.png" alt="">
-      --------------------------------------------------------------------------END
-      `
+      text: '',
+      path: '/static/Users/UserId/ArticleId/article.txt'
     }
   },
   components: {
-
+  },
+  mounted () {
+    PubSub.subscribe('isShowList', (msg, data) => {
+var fs=require('fs');
+  
+fs.readFile(this.path,'utf-8',function(err,data){
+    if(err){
+        console.error(err);
+    }
+    else{
+        console.log(data);
+    }
+});
+    })
   }
 }
 </script>

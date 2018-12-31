@@ -10,7 +10,9 @@
   <div class="answer_item_rigth">
     <div class="answer_text">
       <div class="scroll_hide">
-        {{item.answerText}}
+      <div class="inner_hide">
+         {{item.answerText}}
+      </div>
       </div>
     </div>
   </div>
@@ -103,5 +105,11 @@ export default {
     overflow: auto;
     height: 100%;
     width: 870px;
+  }
+  .inner_hide {
+    /* border: 1px solid green; */
+    /* width: 860px; */
+    padding: 10px;
+    box-sizing: border-box;
   }
 </style>
